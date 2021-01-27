@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="signup-logo">
+    <img src="assets/img/appicon.svg" alt="Ionic Logo">
+  </div>
+
+  <form #signupForm="ngForm" novalidate>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked" color="primary">Username</ion-label>
+        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+          Username is required
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          Password is required
+        </p>
+      </ion-text>
+    </ion-list>
+
+    <div style="display: flex; justify-content: center; margin-top: 15px;" *ngIf="showIdentity" >
+      <img src="assets/images/card.jpg" style="max-width: 300px;border: 3px solid #00aaff; box-shadow: 3px 3px 11px #d0d0d0; border-radius: 4px;">
+    </div>
+
+    <div class="ion-padding">
+      <ion-button (click)="onCamera()" type="submit" expand="block">
+        <ion-icon slot="start" name="camera-outline"></ion-icon>
+        Scan identity
+      </ion-button>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">First name</ion-label>
+      <ion-input [(ngModel)]="signup.first_name" name="first_name" type="text" #username="ngModel" required>
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Last name</ion-label>
+      <ion-input [(ngModel)]="signup.last_name" name="last_name" type="text" #username="ngModel" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Birthdate</ion-label>
+      <ion-input [(ngModel)]="signup.birthdate" name="birthdate" type="text" #username="ngModel" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Identity Number</ion-label>
+      <ion-input [(ngModel)]="signup.identity" name="identity" type="text" #username="ngModel" required>
+      </ion-input>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button (click)="onSignup()" type="submit" expand="block">Create</ion-button>
+    </div>
+
+  </form>
+
+</ion-content>
